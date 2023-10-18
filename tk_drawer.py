@@ -40,16 +40,21 @@ class TkDrawer:
         self.canvas.create_line(SIZE / 2, 0, SIZE / 2, SIZE, fill="blue")
         self.root.update()
 
-    # Рисование точки
-    def draw_point(self, p):
+    # Рисование цветной точки ()
+    def draw_point(self, p, color):
         self.canvas.create_oval(
-            x(p) + 1, y(p) + 1, x(p) - 1, y(p) - 1, fill="black")
+            x(p) + 1, y(p) + 1, x(p) - 1, y(p) - 1, fill=color)
         self.root.update()
 
-    # Рисование линии
-    def draw_line(self, p, q):
-        self.canvas.create_line(x(p), y(p), x(q), y(q), fill="black", width=2)
+    # Рисование цветной линии ()
+    def draw_line(self, p, q, color):
+        self.canvas.create_line(x(p), y(p), x(q), y(q), fill=color, width=2)
         self.root.update()
+
+    # Рисование стандартного прямоугольника ()
+    def draw_rectangle(self, p, q):
+        self.canvas.create_rectangle(min(x(p), x(q)), max(y(p), y(q)),
+                                     max(x(p), x(q)), min(y(p), y(q)))
 
 
 if __name__ == "__main__":
@@ -58,7 +63,7 @@ if __name__ == "__main__":
     from r2point import R2Point
     tk = TkDrawer()
     tk.clean()
-    tk.draw_point(R2Point(2.0, 2.0))
-    tk.draw_line(R2Point(0.0, 0.0), R2Point(1.0, 1.0))
-    tk.draw_line(R2Point(0.0, 0.0), R2Point(1.0, 0.0))
+    tk.draw_point(R2Point(2.0, 2.0), "black")
+    tk.draw_recatngle(R2Point(0.0, 0.0), R2Point(1.0, 1.0))
+    tk.draw_line(R2Point(0.0, 0.0), R2Point(1.0, 0.0), "black")
     time.sleep(5)

@@ -49,5 +49,11 @@ if __name__ == "__main__":
     x = R2Point(1.0, 1.0)
     print(type(x), x.__dict__)
     print(x.dist(R2Point(1.0, 0.0)))
-    a, b, c = R2Point(0.0, 0.0), R2Point(1.0, 0.0), R2Point(1.0, 1.0)
-    print(R2Point.area(a, c, b))
+    x, y, z, a, b, c = R2Point(
+        1.0, 0.0), R2Point(
+        0.0, 1.0), R2Point(
+        0.0, 1.0), R2Point(
+        -5.0, -5.0), R2Point(
+        0.0, 4.0), R2Point(
+        3.0, -4.0)
+    print(R2Point.is_rib_inside(x, y, a, b, c))
