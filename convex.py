@@ -73,8 +73,8 @@ class Polygon(Figure):
         # Инитиализация искомого периметра в многоугольнике ()
         self._per = 0.0
         self._per += R2Point.new_dist(a, b, self.k, self.m) + \
-                     R2Point.new_dist(b, c, self.k, self.m) + \
-                     R2Point.new_dist(a, c, self.k, self.m)
+            R2Point.new_dist(b, c, self.k, self.m) + \
+            R2Point.new_dist(a, c, self.k, self.m)
 
     def perimeter(self):
         return self._perimeter
@@ -134,7 +134,7 @@ class Polygon(Figure):
                 t.dist(self.points.last())
             # ()
             self._per += R2Point.new_dist(t, self.points.first(), self.k,
-                                             self.m) + \
+                                          self.m) + \
                 R2Point.new_dist(t, self.points.last(), self.k, self.m)
             self.points.push_first(t)
         return self
