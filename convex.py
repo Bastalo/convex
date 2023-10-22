@@ -43,11 +43,7 @@ class Segment(Figure):
 
     # Вхождение двуугольника в стандартный прямоугольник
     def per(self):
-        if R2Point.is_inside(self.p, self.k, self.m) and \
-           R2Point.is_inside(self.q, self.k, self.m):
-            return 2.0 * self.p.dist(self.q)
-        else:
-            return 0.0
+        return 2.0 * R2Point.new_dist(self.p, self.q, self.k, self.m)
 
     def add(self, r):
         if R2Point.is_triangle(self.p, self.q, r):
@@ -76,15 +72,9 @@ class Polygon(Figure):
         self._area = abs(R2Point.area(a, b, c))
         # Инитиализация искомого периметра в многоугольнике ()
         self._per = 0.0
-        if R2Point.is_inside(a, self.k, self.m) and \
-           R2Point.is_inside(b, self.k, self.m):
-            self._per += a.dist(b)
-        if R2Point.is_inside(a, self.k, self.m) and \
-           R2Point.is_inside(c, self.k, self.m):
-            self._per += a.dist(c)
-        if R2Point.is_inside(b, self.k, self.m) and \
-           R2Point.is_inside(c, self.k, self.m):
-            self._per += b.dist(c)
+        self._per += R2Point.new_dist(a, b, self.k, self.m) + \
+                     R2Point.new_dist(b, c, self.k, self.m) + \
+                     R2Point.new_dist(a, c, self.k, self.m)
 
     def perimeter(self):
         return self._perimeter
@@ -114,9 +104,8 @@ class Polygon(Figure):
                                            self.points.last(),
                                            self.points.first()))
             # ()
-            if R2Point.is_inside(self.points.last(), self.k, self.m) and \
-               R2Point.is_inside(self.points.first(), self.k, self.m):
-                self._per -= self.points.first().dist(self.points.last())
+            self._per -= R2Point.new_dist(self.points.first(),
+                                          self.points.last(), self.k, self.m)
 
             # удаление освещённых рёбер из начала дека
             p = self.points.pop_first()
@@ -124,9 +113,8 @@ class Polygon(Figure):
                 self._perimeter -= p.dist(self.points.first())
                 self._area += abs(R2Point.area(t, p, self.points.first()))
                 # ()
-                if R2Point.is_inside(p, self.k, self.m) and \
-                   R2Point.is_inside(self.points.first(), self.k, self.m):
-                    self._per -= self.points.first().dist(p)
+                self._per -= R2Point.new_dist(self.points.first(), p,
+                                              self.k, self.m)
                 p = self.points.pop_first()
             self.points.push_first(p)
 
@@ -136,9 +124,8 @@ class Polygon(Figure):
                 self._perimeter -= p.dist(self.points.last())
                 self._area += abs(R2Point.area(t, p, self.points.last()))
                 # ()
-                if R2Point.is_inside(self.points.last(), self.k, self.m) and \
-                   R2Point.is_inside(p, self.k, self.m):
-                    self._per -= p.dist(self.points.last())
+                self._per -= R2Point.new_dist(p, self.points.last(),
+                                              self.k, self.m)
                 p = self.points.pop_last()
             self.points.push_last(p)
 
@@ -146,14 +133,10 @@ class Polygon(Figure):
             self._perimeter += t.dist(self.points.first()) + \
                 t.dist(self.points.last())
             # ()
-            if R2Point.is_inside(t, self.k, self.m) and \
-               R2Point.is_inside(self.points.first(), self.k, self.m):
-                self._per += t.dist(self.points.first())
-            if R2Point.is_inside(self.points.last(), self.k, self.m) and \
-               R2Point.is_inside(t, self.k, self.m):
-                self._per += t.dist(self.points.last())
+            self._per += R2Point.new_dist(t, self.points.first(), self.k,
+                                             self.m) + \
+                R2Point.new_dist(t, self.points.last(), self.k, self.m)
             self.points.push_first(t)
-
         return self
 
 
