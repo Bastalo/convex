@@ -113,7 +113,7 @@ class Polygon(Figure):
                 self._perimeter -= p.dist(self.points.first())
                 self._area += abs(R2Point.area(t, p, self.points.first()))
                 # ()
-                self._per -= R2Point.new_dist(self.points.first(), p,
+                self._per -= R2Point.new_dist(p, self.points.first(),
                                               self.k, self.m)
                 p = self.points.pop_first()
             self.points.push_first(p)
