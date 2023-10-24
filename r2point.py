@@ -91,7 +91,8 @@ class R2Point:
                     elif x_min <= (y_max - b_1)/k_1 <= x_max:
                         b = R2Point((y_max - b_1)/k_1, y_max)
             d = a.dist(b)
-        else:
+        elif y_min <= p.y <= y_max and y_min <= q.y <= y_max or \
+                x_min <= p.x <= x_max and x_min <= q.x <= x_max:
             if b_1 == p.x and b_1 != q.y:
                 if p.y <= y_max <= q.y:
                     if p.y >= y_min:
@@ -129,14 +130,18 @@ class R2Point:
 
 
 if __name__ == "__main__":
-    x = R2Point(1.0, 1.0)
-    print(type(x), x.__dict__)
-    print(x.dist(R2Point(1.0, 0.0)))
-    x, y, z, a, b, c = R2Point(
-        1.0, 0.0), R2Point(
-        0.0, 1.0), R2Point(
-        0.0, 1.0), R2Point(
-        -5.0, -5.0), R2Point(
-        0.0, 4.0), R2Point(
-        3.0, -4.0)
-    print(R2Point.is_inside(x, a, b))
+    p, q, k, m = R2Point(
+        3.0, 3.0), R2Point(
+        3.0, -1.0), R2Point(
+        0.0, 0.0), R2Point(
+        2.0, 2.0)
+    a, b, c = R2Point(
+        -1.0, -1.0), R2Point(
+        -1.0, 1.0), R2Point(
+        3.0, 1.0)
+    print(R2Point.new_dist(p, q, k, m))
+    print(R2Point.new_dist(q, a, k, m))
+    print(R2Point.new_dist(a, b, k, m))
+    print(R2Point.new_dist(b, c, k, m))
+    print(R2Point.new_dist(c, p, k, m))
+    print(R2Point.new_dist(c, q, k, m))
