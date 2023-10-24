@@ -111,3 +111,8 @@ class TestR2Point:
         a, b = R2Point(1.0, 0.0), R2Point(0.0, -2.0)
         k, m = R2Point(2.0, 1.0), R2Point(-2.0, -1.0)
         assert R2Point.new_dist(a, b, k, m) == approx(1.118033988749895)
+
+    def test_new_dist8(self):
+        a, b = R2Point(3.0, -1.0), R2Point(3.0, 3.0)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(0.0)
