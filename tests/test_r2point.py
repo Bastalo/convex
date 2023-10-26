@@ -112,7 +112,102 @@ class TestR2Point:
         k, m = R2Point(2.0, 1.0), R2Point(-2.0, -1.0)
         assert R2Point.new_dist(a, b, k, m) == approx(1.118033988749895)
 
-    def test_new_dist8(self):
+    def test_new_dist9(self):
         a, b = R2Point(3.0, -1.0), R2Point(3.0, 3.0)
         k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
         assert R2Point.new_dist(a, b, k, m) == approx(0.0)
+
+    def test_new_dist10(self):
+        a, b = R2Point(2.5, 1.0), R2Point(1.0, 2.5)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(0.7071067811865476)
+
+    def test_new_dist11(self):
+        a, b = R2Point(2.5, 1.0), R2Point(1.5, -0.5)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(0.3004626062)
+
+    def test_new_dist12(self):
+        a, b = R2Point(2.5, 1.0), R2Point(-0.5, 1.5)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(2.0275875)
+
+    def test_new_dist13(self):
+        a, b = R2Point(-0.5, 1.5), R2Point(1.0, 2.5)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(0.3004626062)
+
+    def test_new_dist14(self):
+        a, b = R2Point(-0.5, 1.5), R2Point(1.5, -0.5)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(1.41421356)
+
+    def test_new_dist15(self):
+        a, b = R2Point(-0.5, 1.5), R2Point(2.5, 1.0)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(2.0275875)
+
+    def test_new_dist16(self):
+        a, b = R2Point(1.5, -0.5), R2Point(1.0, 2.5)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(2.0275875)
+
+    def test_new_dist17(self):
+        a, b = R2Point(1.5, -0.5), R2Point(2.5, 1.0)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(0.3004626062)
+
+    def test_new_dist18(self):
+        a, b = R2Point(1.5, -0.5), R2Point(-0.5, 1.5)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(1.41421356)
+
+    def test_new_dist19(self):
+        a, b = R2Point(1.5, -0.5), R2Point(1.0, 1.0)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(1.0540925)
+
+    def test_new_dist20(self):
+        a, b = R2Point(1.0, 2.5), R2Point(1.5, -0.5)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(2.02758751)
+
+    def test_new_dist21(self):
+        a, b = R2Point(1.0, 2.5), R2Point(2.5, 1.0)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(0.7071067811865476)
+
+    def test_new_dist22(self):
+        a, b = R2Point(1.0, 2.5), R2Point(-0.5, 1.5)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(0.3004626062)
+
+    def test_new_dist23(self):
+        a, b = R2Point(1.0, 2.5), R2Point(1.0, -0.5)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(2.0)
+
+    def test_new_dist24(self):
+        a, b = R2Point(1.0, -0.5), R2Point(1.0, 1.0)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(1.0)
+
+    def test_new_dist25(self):
+        a, b = R2Point(1.0, -0.5), R2Point(1.0, 4.5)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(2.0)
+
+    def test_new_dist26(self):
+        a, b = R2Point(-0.5, 1.0), R2Point(2.5, 1.0)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(2.0)
+
+    def test_new_dist27(self):
+        a, b = R2Point(1.0, 1.0), R2Point(-0.5, 1.0)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(1.0)
+
+    def test_new_dist28(self):
+        a, b = R2Point(5.5, 1.0), R2Point(-0.5, 1.0)
+        k, m = R2Point(2.0, 2.0), R2Point(0.0, 0.0)
+        assert R2Point.new_dist(a, b, k, m) == approx(2.0)
