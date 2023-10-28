@@ -73,9 +73,7 @@ class R2Point:
                 if p.is_inside(k, m):
                     b = p
                 else:
-                    if y_min <= k_1 * x_max + b_1 <= y_max:
-                        b = R2Point(x_max, k_1 * x_max + b_1)
-                    elif x_min <= (y_min - b_1)/k_1 <= x_max:
+                    if x_min <= (y_min - b_1)/k_1 <= x_max:
                         b = R2Point((y_min - b_1)/k_1, y_min)
                     elif x_min <= (y_max - b_1)/k_1 <= x_max:
                         b = R2Point((y_max - b_1)/k_1, y_max)
@@ -84,25 +82,12 @@ class R2Point:
                 a = R2Point((y_min - b_1)/k_1, y_min)
                 if p.is_inside(k, m):
                     b = p
-                else:
-                    if y_min <= k_1 * x_min + b_1 <= y_max:
-                        b = R2Point(x_min, k_1 * x_min + b_1)
-                    elif y_min <= k_1 * x_max + b_1 <= y_max:
-                        b = R2Point(x_max, k_1 * x_max + b_1)
-                    elif x_min <= (y_max - b_1)/k_1 <= x_max:
-                        b = R2Point((y_max - b_1)/k_1, y_max)
+                elif x_min <= (y_max - b_1)/k_1 <= x_max:
+                    b = R2Point((y_max - b_1)/k_1, y_max)
             elif x_min <= (y_max - b_1)/k_1 <= x_max and \
                     (p.y <= y_max <= q.y or q.y <= y_max <= p.y):
                 a = R2Point((y_max - b_1)/k_1, y_max)
-                if p.is_inside(k, m):
-                    b = p
-                else:
-                    if y_min <= k_1 * x_min + b_1 <= y_max:
-                        b = R2Point(x_min, k_1 * x_min + b_1)
-                    elif y_min <= k_1 * x_max + b_1 <= y_max:
-                        b = R2Point(x_max, k_1 * x_max + b_1)
-                    elif x_min <= (y_min - b_1)/k_1 <= x_max:
-                        b = R2Point((y_min - b_1)/k_1, y_min)
+                b = p
             d = a.dist(b)
         elif y_min <= p.y <= y_max and y_min <= q.y <= y_max or \
                 x_min <= p.x <= x_max and x_min <= q.x <= x_max:
